@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Addison Felizola’s documented pre-launch Memphis wholesaling project: plan, progress, market thesis, and field notes." />
+  <link rel="icon" href="data:," />
+  <title>Addison Felizola — Memphis Wholesaling Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light dark;
+      --paper: #f4f1e9;
+      --paper-deep: #e9e4d8;
+      --ink: #17221f;
+      --muted: #58635e;
+      --faint: #767f79;
+      --line: #c9c9bf;
+      --line-strong: #999f98;
+      --accent: #a94f2c;
+      --accent-dark: #76341d;
+      --green: #274f43;
+      --panel: #e6ded0;
+      --nav: rgba(244, 241, 233, .94);
+      --white: #fffdf8;
+      --shadow: 0 18px 50px rgba(28, 35, 30, .10);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #151a18;
+        --paper-deep: #1d2421;
+        --ink: #edf0e9;
+        --muted: #b7beb8;
+        --faint: #949e97;
+        --line: #37413c;
+        --line-strong: #59655e;
+        --accent: #e07950;
+        --accent-dark: #f39a77;
+        --green: #9bc6b5;
+        --panel: #222b27;
+        --nav: rgba(21, 26, 24, .94);
+        --white: #1b211e;
+        --shadow: 0 18px 50px rgba(0, 0, 0, .24);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Libre Franklin", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .wrap { width: min(1180px, calc(100% - 64px)); margin-inline: auto; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--nav);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+    .brand {
+      text-decoration: none;
+      font-family: "Source Serif 4", serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px, 2.6vw, 36px); }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .71rem;
+      font-weight: 500;
+      letter-spacing: .09em;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    .hero {
+      min-height: min(790px, calc(100vh - 72px));
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(330px, .75fr);
+      align-items: center;
+      gap: clamp(52px, 8vw, 112px);
+      padding-block: clamp(72px, 10vw, 132px);
+    }
+    .eyebrow, .section-label, .status-meta, .mini-label, .note-index, .footer-date {
+      font-family: "IBM Plex Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-size: .72rem;
+      font-weight: 500;
+    }
+    .eyebrow { color: var(--accent); margin: 0 0 26px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(3.2rem, 6.2vw, 6.4rem);
+      line-height: .98;
+      letter-spacing: -.048em;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+    .hero-intro {
+      max-width: 670px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+      line-height: 1.65;
+      margin-bottom: 34px;
+    }
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .76rem;
+      letter-spacing: .09em;
+      font-weight: 500;
+    }
+    .text-link:hover { color: var(--accent); }
+
+    .status-panel {
+      position: relative;
+      padding: 30px;
+      background: var(--ink);
+      color: var(--paper);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    @media (prefers-color-scheme: dark) {
+      .status-panel { background: #eef0ea; color: #17221f; }
+    }
+    .status-panel::after {
+      content: "04";
+      position: absolute;
+      right: -13px;
+      top: 44px;
+      color: currentColor;
+      opacity: .055;
+      font-family: "Source Serif 4", serif;
+      font-weight: 700;
+      font-size: 11rem;
+      line-height: 1;
+    }
+    .status-heading {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .69rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .status-date {
+      position: relative;
+      z-index: 1;
+      margin: 18px 0 0;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .67rem;
+      letter-spacing: .1em;
+    }
+    .status-count { position: relative; z-index: 1; padding: 28px 0 22px; }
+    .status-count strong {
+      display: block;
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(4rem, 8vw, 6.4rem);
+      line-height: .9;
+      letter-spacing: -.05em;
+    }
+    .status-count span { display: block; font-size: 1.15rem; font-weight: 600; margin-top: 18px; }
+    .status-caption { position: relative; z-index: 1; opacity: .68; font-size: .78rem; margin-bottom: 28px; }
+    .status-meta { position: relative; z-index: 1; line-height: 1.9; font-size: .64rem; }
+
+    section { border-top: 1px solid var(--line); }
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(175px, .33fr) minmax(0, 1fr);
+      gap: clamp(48px, 8vw, 120px);
+      padding-block: clamp(72px, 9vw, 120px);
+    }
+    .section-label { color: var(--accent); padding-top: 8px; }
+    .section-title {
+      max-width: 780px;
+      font-family: "Source Serif 4", serif;
+      font-weight: 600;
+      font-size: clamp(2.4rem, 4.3vw, 4.6rem);
+      line-height: 1.03;
+      letter-spacing: -.035em;
+      margin-bottom: 24px;
+    }
+    .section-intro { max-width: 740px; color: var(--muted); font-size: 1.07rem; margin-bottom: 54px; }
+
+    .phase-list { border-top: 1px solid var(--line-strong); }
+    .phase {
+      display: grid;
+      grid-template-columns: 58px minmax(150px, .52fr) 100px minmax(0, 1fr);
+      gap: 20px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .phase-number { font-family: "IBM Plex Mono", monospace; color: var(--faint); font-size: .8rem; }
+    .phase h3 { margin: 0; font-family: "Source Serif 4", serif; font-size: 1.22rem; line-height: 1.3; }
+    .phase p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.65; }
+    .tag {
+      width: fit-content;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .62rem;
+      letter-spacing: .08em;
+      padding: 4px 8px;
+      line-height: 1.3;
+      border: 1px solid var(--line-strong);
+      color: var(--faint);
+    }
+    .tag.done { background: var(--green); border-color: var(--green); color: var(--paper); }
+    @media (prefers-color-scheme: dark) {
+      .tag.done { color: #16201d; }
+    }
+
+    .numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line-strong);
+      border-left: 1px solid var(--line);
+    }
+    .number-cell {
+      min-height: 190px;
+      padding: 26px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .number-cell strong {
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: .9;
+      letter-spacing: -.045em;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .number-cell span { max-width: 180px; color: var(--muted); font-size: .86rem; line-height: 1.4; }
+    .metric-caption { color: var(--faint); font-size: .75rem; margin: 18px 0 0; }
+
+    .market-lead {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+      gap: clamp(44px, 7vw, 90px);
+      align-items: start;
+    }
+    .market-sub {
+      font-family: "Source Serif 4", serif;
+      font-size: clamp(1.55rem, 2.5vw, 2.35rem);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+      margin-bottom: 22px;
+    }
+    .market-copy { color: var(--muted); max-width: 700px; }
+    .zip-panel { border-top: 3px solid var(--ink); padding-top: 18px; }
+    .mini-label { color: var(--accent); margin-bottom: 9px; }
+    .zip-panel h3 { font-family: "Source Serif 4", serif; font-size: 1.2rem; margin-bottom: 22px; }
+    .zip-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .zip-list span {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .72rem;
+    }
+    .market-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); margin-top: 68px; }
+    .market-stat { background: var(--paper); padding: 24px; min-height: 170px; }
+    .market-stat strong { display: block; color: var(--accent); font-family: "Source Serif 4", serif; font-size: clamp(2.1rem, 3.5vw, 3.5rem); line-height: 1; margin-bottom: 26px; }
+    .market-stat span { color: var(--muted); font-size: .8rem; line-height: 1.45; }
+
+    .notes { display: grid; grid-template-columns: 1fr 1fr; gap: 52px 58px; }
+    .note { border-top: 1px solid var(--line-strong); padding-top: 18px; }
+    .note-index { color: var(--accent); margin-bottom: 24px; }
+    .note h3 { font-family: "Source Serif 4", serif; font-size: 1.42rem; line-height: 1.25; margin-bottom: 16px; }
+    .note p { color: var(--muted); font-size: .91rem; margin-bottom: 0; }
+
+    .contact-section { background: var(--green); color: #f2f1e9; }
+    @media (prefers-color-scheme: dark) {
+      .contact-section { background: #233c34; color: #f2f1e9; }
+    }
+    .contact-section .section-grid { padding-block: clamp(78px, 10vw, 132px); }
+    .contact-section .section-label { color: #e69a79; }
+    .contact-section .section-title { max-width: 890px; }
+    .contact-copy { max-width: 690px; color: rgba(242, 241, 233, .75); font-size: 1.05rem; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 38px; }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 48px;
+      border: 1px solid rgba(255,255,255,.42);
+      padding: 10px 15px;
+      text-decoration: none;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: .72rem;
+      letter-spacing: .03em;
+      transition: background .2s ease, color .2s ease;
+    }
+    .contact-link svg { width: 18px; height: 18px; flex: 0 0 auto; }
+    .contact-link:hover { background: #f2f1e9; color: #233c34; }
+    button.contact-link {
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      font-family: "IBM Plex Mono", monospace;
+      text-align: left;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    button.contact-link.copied { background: #f2f1e9; color: #233c34; }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    footer { background: var(--paper-deep); border-top: 1px solid var(--line); }
+    .footer-inner { min-height: 110px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .footer-line { font-family: "Source Serif 4", serif; font-weight: 600; margin: 0; }
+    .footer-date { color: var(--faint); margin: 0; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .status-panel { max-width: 590px; }
+      .phase { grid-template-columns: 44px minmax(145px, .46fr) 90px minmax(0, 1fr); gap: 13px; }
+      .market-stats { grid-template-columns: 1fr 1fr; }
+      .market-lead { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      html { scroll-padding-top: 108px; }
+      .wrap { width: min(100% - 36px, 1180px); }
+      .nav-inner { min-height: 96px; display: block; padding-block: 12px 10px; }
+      .brand { display: block; line-height: 1.2; margin-bottom: 12px; }
+      .nav-links { justify-content: space-between; gap: 10px; }
+      .nav-links a { font-size: .62rem; letter-spacing: .055em; }
+      .hero { padding-block: 62px 78px; gap: 50px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+      .status-panel { padding: 24px; }
+      .section-grid { grid-template-columns: 1fr; gap: 18px; }
+      .section-label { padding-top: 0; }
+      .section-intro { margin-bottom: 38px; }
+      .phase { grid-template-columns: 42px 1fr auto; padding: 22px 0; }
+      .phase h3 { font-size: 1.15rem; }
+      .phase p { grid-column: 2 / -1; }
+      .numbers { grid-template-columns: 1fr 1fr; }
+      .number-cell { min-height: 165px; padding: 20px; }
+      .market-stats { grid-template-columns: 1fr 1fr; margin-top: 50px; }
+      .market-stat { min-height: 150px; padding: 20px; }
+      .notes { grid-template-columns: 1fr; gap: 38px; }
+      .contact-links { flex-direction: column; align-items: stretch; }
+      .contact-link { justify-content: center; text-align: center; overflow-wrap: anywhere; }
+      .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding-block: 30px; gap: 7px; }
+    }
+
+    @media (max-width: 420px) {
+      .numbers { grid-template-columns: 1fr; }
+      .number-cell { min-height: 140px; }
+      .market-stats { grid-template-columns: 1fr; }
+      .market-stat { min-height: 132px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body id="top">
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">Addison Felizola</a>
+      <div class="nav-links">
+        <a href="#plan">PLAN</a>
+        <a href="#progress">PROGRESS</a>
+        <a href="#market">MARKET</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="wrap hero">
+      <div>
+        <p class="eyebrow">Pre-launch field project · Memphis, Tennessee</p>
+        <h1>Building a wholesaling business, one documented step at a time.</h1>
+        <p class="hero-intro">I'm Addison Felizola. I'm building a virtual wholesaling operation in Memphis, Tennessee. This page is the public record: the plan, the work so far, and what's next.</p>
+        <a class="text-link" href="#plan">SEE THE PLAN ↓</a>
+      </div>
+
+      <aside class="status-panel" aria-labelledby="status-title">
+        <div class="status-heading">
+          <span id="status-title">Current project status</span>
+          <span>Project 01</span>
+        </div>
+        <p class="status-date">OCTOBER 2026</p>
+        <div class="status-count">
+          <strong>04 / 08</strong>
+          <span>Outreach ready to begin</span>
+        </div>
+        <p class="status-caption">Four preparation phases complete and four phases upcoming</p>
+        <div class="status-meta">MARKET: Memphis, TN · MODEL: Virtual · START: Oct. 2026 · STATUS: Pre-launch</div>
+      </aside>
+    </header>
+
+    <section id="plan">
+      <div class="wrap section-grid">
+        <div class="section-label">01 / The plan</div>
+        <div>
+          <h2 class="section-title">A controlled path from research to close.</h2>
+          <p class="section-intro">Each phase has a clear proof point. Nothing moves forward until the legal, financial, and operational gate before it is handled.</p>
+
+          <div class="phase-list">
+            <article class="phase">
+              <span class="phase-number">01</span><h3>Market selection</h3><span class="tag done">DONE</span>
+              <p>Picked Memphis, Tennessee after comparing five markets. Validated six zip codes: 38126, 38114, 38106, 38109, 38127, and 38116.</p>
+            </article>
+            <article class="phase">
+              <span class="phase-number">02</span><h3>Legal research</h3><span class="tag done">DONE</span>
+              <p>Researched Tennessee Public Chapter 72: mandatory disclosures, a three-business-day assignment notice, and strict limits on brokerage activity. Attorney and title-company validation remain required before any contract.</p>
+            </article>
+            <article class="phase">
+              <span class="phase-number">03</span><h3>Lead generation</h3><span class="tag done">DONE</span>
+              <p>Built a focused 38126 list with 74 distressed-property leads tracked and 12 verified owner contacts.</p>
+            </article>
+            <article class="phase">
+              <span class="phase-number">04</span><h3>Outreach systems</h3><span class="tag done">DONE</span>
+              <p>Built call scripts, objection handlers, a lead tracker, and a five-touch follow-up cadence.</p>
+            </article>
+            <article class="phase">
+              <span class="phase-number">05</span><h3>Seller conversations</h3><span class="tag">UPCOMING</span>
+              <p>Outreach systems are built and ready. First calls are scheduled, with a target of 20 to 30 real seller conversations per week.</p>
+            </article>
+            <article class="phase">
+              <span class="phase-number">06</span><h3>First contract</h3><span class="tag">UPCOMING</span>
+              <p>Use an attorney-reviewed purchase agreement after earnest money norms are confirmed with a local title company.</p>
+            </article>
+            <article class="phase">
+              <span class="phase-number">07</span><h3>First assignment</h3><span class="tag">UPCOMING</span>
+              <p>Assign the contract to a vetted cash buyer through an investor-friendly title company.</p>
+            </article>
+            <article class="phase">
+              <span class="phase-number">08</span><h3>First deal closed</h3><span class="tag">UPCOMING</span>
+              <p>Collect the first assignment fee, document what worked, then systematize the process and scale deliberately.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="progress">
+      <div class="wrap section-grid">
+        <div class="section-label">02 / By the numbers</div>
+        <div>
+          <h2 class="section-title">Work completed before the first deal.</h2>
+          <p class="section-intro">Progress is measured by verified inputs and operating assets, not projected revenue.</p>
+          <div class="numbers">
+            <div class="number-cell"><strong>6</strong><span>zip codes under analysis</span></div>
+            <div class="number-cell"><strong>74</strong><span>property leads tracked</span></div>
+            <div class="number-cell"><strong>12</strong><span>verified owner contacts</span></div>
+            <div class="number-cell"><strong>12</strong><span>cash buyers identified</span></div>
+            <div class="number-cell"><strong>3</strong><span>investor-friendly title companies researched</span></div>
+            <div class="number-cell"><strong>1</strong><span>state statute researched end to end</span></div>
+          </div>
+          <p class="metric-caption">Project metrics as of October 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="wrap section-grid">
+        <div class="section-label">03 / Why Memphis</div>
+        <div>
+          <h2 class="section-title">The market thesis.</h2>
+          <div class="market-lead">
+            <div>
+              <h3 class="market-sub">Accessible price points, visible distress, and a real cash-buyer bench.</h3>
+              <p class="market-copy">Memphis combines distressed inventory in the roughly $20,000 to $95,000 range with a deep landlord and investor market. Approximately 35 percent of local sales are cash, which supports a viable assignment exit when the numbers are conservative and the buyer is qualified.</p>
+            </div>
+            <aside class="zip-panel">
+              <div class="mini-label">Working zip set</div>
+              <h3>Memphis zip codes under analysis</h3>
+              <div class="zip-list" aria-label="Memphis zip codes under analysis">
+                <span>38126</span><span>38114</span><span>38106</span><span>38109</span><span>38127</span><span>38116</span>
+              </div>
+            </aside>
+          </div>
+          <div class="market-stats">
+            <div class="market-stat"><strong>$20K–$95K</strong><span>Distressed-property price range studied</span></div>
+            <div class="market-stat"><strong>~35%</strong><span>Share of Memphis sales completed in cash</span></div>
+            <div class="market-stat"><strong>6</strong><span>Neighborhood zip codes screened</span></div>
+            <div class="market-stat"><strong>1</strong><span>Primary zip selected for launch: 38126</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="field-notes">
+      <div class="wrap section-grid">
+        <div class="section-label">04 / Field notes</div>
+        <div>
+          <h2 class="section-title">What the research changed.</h2>
+          <p class="section-intro">The operating plan improved by testing common wholesaling advice against Tennessee law and Memphis-specific deal risk.</p>
+          <div class="notes">
+            <article class="note">
+              <div class="note-index">Note 01</div>
+              <h3>Tennessee regulates the assignment process.</h3>
+              <p>Public Chapter 72 requires key disclosures inside the purchase agreement itself, in bold, large-format text. The seller also needs written notice at least three business days before an assignment takes effect.</p>
+            </article>
+            <article class="note">
+              <div class="note-index">Note 02</div>
+              <h3>Earnest money norms are local.</h3>
+              <p>Early national guidance suggested $100. Tennessee-specific sources point to $500 to $2,000, so the actual Memphis norm will be confirmed with local title companies before the first offer.</p>
+            </article>
+            <article class="note">
+              <div class="note-index">Note 03</div>
+              <h3>Title risk starts with the seller story.</h3>
+              <p>Heirship properties are a leading Memphis deal-killer. Ownership and all heirs must be verified before time or money goes into marketing the contract.</p>
+            </article>
+            <article class="note">
+              <div class="note-index">Note 04</div>
+              <h3>The first fee is operating income.</h3>
+              <p>Assignment fees are ordinary income, not capital gains. Expense tracking, quarterly estimates, and CPA guidance belong in the system from deal one.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="wrap section-grid">
+        <div class="section-label">05 / Contact</div>
+        <div>
+          <h2 class="section-title">Want to compare notes or partner on a deal?</h2>
+          <p class="contact-copy">I'm documenting the operating system as I build it. If you work in Memphis real estate, have a compatible buy box, or want to talk wholesaling, reach out.</p>
+          <div class="contact-links">
+            <button type="button" class="contact-link copy-email-btn" data-email="addisonfelizola@gmail.com" aria-label="Copy email address: addisonfelizola@gmail.com">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="4.5" width="19" height="15"/><path d="m3 6 9 7 9-7"/></svg>
+              <span class="email-label">addisonfelizola@gmail.com</span>
+            </button>
+            <span class="sr-only" role="status" aria-live="polite" id="copy-status"></span>
+            <a class="contact-link" href="https://www.linkedin.com/in/addison-felizola-602285406" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 10v7M8 7v.01M12 17v-4a3 3 0 0 1 6 0v4M12 10v7"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <p class="footer-line">Addison Felizola · Memphis wholesaling, documented.</p>
+      <p class="footer-date">Last updated: October 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+      var sections = links.map(function (link) { return document.querySelector(link.getAttribute('href')); }).filter(Boolean);
+      if (!('IntersectionObserver' in window)) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        });
+      }, { rootMargin: '-25% 0px -65% 0px', threshold: 0 });
+      sections.forEach(function (section) { observer.observe(section); });
+    }());
+
+    (function () {
+      var btn = document.querySelector('.copy-email-btn');
+      if (!btn) return;
+      var label = btn.querySelector('.email-label');
+      var status = document.getElementById('copy-status');
+      var originalText = label ? label.textContent : 'addisonfelizola@gmail.com';
+      var email = btn.getAttribute('data-email') || originalText;
+      var timer = null;
+
+      function showCopied() {
+        if (label) label.textContent = 'Email copied';
+        btn.classList.add('copied');
+        if (status) status.textContent = 'Email copied: ' + email;
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(function () {
+          if (label) label.textContent = originalText;
+          btn.classList.remove('copied');
+          if (status) status.textContent = '';
+        }, 2200);
+      }
+
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        showCopied();
+      }
+
+      btn.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(showCopied).catch(function () { fallbackCopy(email); });
+        } else {
+          fallbackCopy(email);
+        }
+      });
+    }());
+  </script>
+<!-- FELIZOLA-SCROLL-MOTION v2 : tasteful scroll motion for the portfolio.
+     v2: reveals and count-ups replay every time elements scroll back into view.
+     Injected by build.sh. Keep this file as the single source of the motion layer;
+     re-running build.sh re-applies it to fresh exports. -->
+<style>
+  html { scroll-behavior: smooth; }
+  .fx-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.22,.61,.36,1);
+  }
+  .fx-reveal.fx-in { opacity: 1; transform: translateY(0); }
+  .site-header { transition: box-shadow .3s ease; }
+  .site-header.fx-scrolled { box-shadow: 0 6px 24px rgba(20,24,20,.10); }
+  .fx-parallax { will-change: transform; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .fx-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    .fx-parallax { transform: none !important; }
+  }
+</style>
+<script>
+(function () {
+  'use strict';
+  function revealAll() {
+    document.querySelectorAll('.fx-reveal').forEach(function (el) { el.classList.add('fx-in'); });
+  }
+  try {
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* 1. Header gains a soft shadow once the page scrolls. */
+    var header = document.querySelector('.site-header');
+    function onScrollHeader() {
+      if (header) header.classList.toggle('fx-scrolled', window.pageYOffset > 8);
+    }
+    window.addEventListener('scroll', onScrollHeader, { passive: true });
+    onScrollHeader();
+
+    if (reduceMotion) { revealAll(); return; }
+
+    /* 2. Gentle fade-and-rise reveals, staggered within each parent.
+       Replays every time the element scrolls back into view. */
+    var SELECTORS = [
+      '.hero-grid > *',
+      '.section-head',
+      '.proof-item',
+      '.service',
+      '.leak-item',
+      '.work-panel',
+      '.email-card',
+      '.faq-item'
+    ];
+    var targets = [];
+    SELECTORS.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        if (targets.indexOf(el) === -1) targets.push(el);
+      });
+    });
+    targets.forEach(function (el) {
+      el.classList.add('fx-reveal');
+      var sibs = Array.prototype.filter.call(el.parentElement.children, function (c) {
+        return c.classList && c.classList.contains('fx-reveal');
+      });
+      var idx = sibs.indexOf(el);
+      el.style.transitionDelay = Math.min(Math.max(idx, 0), 6) * 90 + 'ms';
+    });
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          entry.target.classList.toggle('fx-in', entry.isIntersecting);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      targets.forEach(function (el) { io.observe(el); });
+    } else {
+      revealAll();
+    }
+
+    /* 3. Proof stats count up each time they scroll into view. */
+    document.querySelectorAll('.proof-num').forEach(function (el) {
+      var m = el.textContent.match(/(\d+)(\D*)/);
+      if (!m) return;
+      var target = parseInt(m[1], 10), suffix = m[2] || '', running = false;
+      function run() {
+        if (running) return; running = true;
+        var start = null, dur = 1200;
+        function step(t) {
+          if (!start) start = t;
+          var p = Math.min((t - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) { requestAnimationFrame(step); } else { running = false; }
+        }
+        requestAnimationFrame(step);
+      }
+      if ('IntersectionObserver' in window) {
+        var cio = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) run(); });
+        }, { threshold: 0.4 });
+        cio.observe(el);
+      } else { run(); }
+    });
+
+    /* 4. Subtle hero parallax: the hero drifts slower than the scroll. */
+    var hero = document.querySelector('.hero');
+    var heroGrid = document.querySelector('.hero-grid');
+    if (hero && heroGrid) {
+      heroGrid.classList.add('fx-parallax');
+      var ticking = false;
+      function updateParallax() {
+        ticking = false;
+        var y = window.pageYOffset, h = hero.offsetHeight || 1;
+        if (y < h * 1.2) heroGrid.style.transform = 'translateY(' + (y * 0.12).toFixed(1) + 'px)';
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+      }, { passive: true });
+    }
+  } catch (err) {
+    revealAll();
+  }
+})();
+</script>
+
+</body>
+</html>
